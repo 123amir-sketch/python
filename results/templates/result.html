@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block mainblock %}
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-1 col-sm-2"></div>
+        <div class="col-10 col-sm-8 card p-5">
+        <div class="my-2 text-center bg-info"><h1>Student Results</h1></div>
+            <div class="">
+                <div class=" my-2 p-2"> Roll No : {{fm.roll_no}}</div>
+                <div class=" my-2 p-2">Name : {{fm.name}}</div>
+                <div class=" my-2 p-2">Class : {{fm.student_class}}</div>
+                <div class=" my-2 p-2">Marks : {{fm.marks}}</div>
+            </div>
+        </div>
+        <div class="col-1 col-sm-2"></div>
+    </div>
+</div>
+
+{% endblock mainblock %}
+
+
+
+
+
+

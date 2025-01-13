@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% block mainblock %}
+
+<div class="container">
+    <div class="row my-5">
+        <div class="col-1 col-sm-2"></div>
+        <div class="col-10 col-sm-8 card p-5">
+        <div class="my-2 text-center bg-info"><h1>Student Results</h1></div>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" class="btn btn-success">submit</button>
+            </form>
+            <div>
+            {% if error_message %}
+                <p class="text-danger mt-3">{{ error_message }}</p>
+            {% endif %}
+            </div>
+        </div>
+        <div class="col-1 col-sm-2"></div>
+    </div>
+</div>
+
+
+{% endblock mainblock %}
+
+
+
+

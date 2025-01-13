@@ -1,0 +1,25 @@
+def process_uploaded_file(sender, instance, created, **kwargs):
+    print('siganls ae running')
+    if created:
+        file_path = instance.file.path
+
+        # Read data from the uploaded Excel file
+        df = pd.read_excel(file_path)
+
+        # Delete any old data associated with the uploaded file (if necessary)
+        Result.objects.filter(result_file=instance).delete()
+
+        # Store new results in the database
+        for _, row in df.iterrows():
+            Result.objects.create(
+                roll_no=row['Roll No'],
+                name=row['Name'],
+                student_class=row['Class'],
+                marks=row['Marks'],
+                result_file=instance  # Associate each result with the uploaded file
+            )
+
+            for _, row in df.iterrows():
+            # Here, we would create Result objects from the uploaded file data
+            print(f"Processing row: {row['Roll No']}")  # Debug line
+            # Normally, you would save the data in the Result model here
